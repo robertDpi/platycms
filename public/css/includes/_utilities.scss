@@ -1,0 +1,110 @@
+// These are very handy tricks made possible by Sass. Read the docs here http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Almost all mixins came from https://github.com/madr/css3-sass-mixins
+
+//  Should IE filters be used or not? Beware of bad website perfomance if turned on.
+$useIEFilters: 0;
+
+// Clearfix to avoid non-semantic classes in your HTML
+@mixin clearfix {
+	&:before, &:after { content: ""; display: table; }
+	&:after { clear: both; }
+	zoom: 1;
+}
+
+@mixin border-image ($path, $offsets, $repeats) {
+  -moz-border-image: $path $offsets $repeats;
+  -o-border-image: $path $offsets $repeats;
+  -webkit-border-image: $path $offsets $repeats;
+  border-image: $path $offsets $repeats;
+}
+
+@mixin border-radius ($values) {
+  -moz-border-radius: $values;
+  -webkit-border-radius: $values;
+  border-radius: $values;
+}
+
+// See http://caniuse.com/#search=box-shadow to understand why we don't need -o or -ms here
+@mixin box-shadow ($x, $y, $offset, $hex, $ie: $useIEFilters) {
+  -moz-box-shadow: $x $y $offset $hex;
+  -webkit-box-shadow: $x $y $offset $hex;
+  box-shadow: $x $y $offset $hex;
+  
+  @if $ie == 1 {
+    $iecolor: '#' + red($hex) + green($hex) + blue($hex);
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$x}, OffY=#{$y}, Color='#{$iecolor}'));
+  }
+}
+
+@mixin linear-gradient ($from, $to, $ie: $useIEFilters) {
+  @if $ie != 1 {
+    background-color: $to;
+  }
+  
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+  background-image: -ms-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, $from),color-stop(1, $to));
+  background-image: -webkit-linear-gradient($from, $to);
+
+  @if $ie == 1 { 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}'));
+  }
+}
+
+@mixin rgba ($hex, $alpha, $ie: $useIEFilters) {     
+  @if $ie == 1 { 
+    // this formula is not accurate enough, will be fixed with sass 3.1
+    $hexopac: '#' + ceil((($alpha * 255)/16) *10) + $hex;
+    background-color: none;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hexopac}',EndColorStr='#{$hexopac}}');
+    -ms-filter: quote(progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$hexopac}',EndColorStr='#{$hexopac}'));
+  }
+  @else {
+    background-color: $hex;
+    background-color: rgba(red($hex), green($hex), blue($hex), $alpha);
+  }
+}
+
+@mixin rotate ($deg) {
+  -moz-transform: rotate(#{$deg}deg);
+  -o-transform: rotate(#{$deg}deg);
+  -ms-transform: rotate(#{$deg}deg);
+  -webkit-transform: rotate(#{$deg}deg);
+}
+
+@mixin scale ($size) {
+	-moz-transform: scale(#{$size});
+	-o-transform: scale(#{$size});
+	-ms-transform: scale(#{$size});
+	-webkit-transform: scale(#{$size});
+}
+
+@mixin transition ($value) {
+  -moz-transition: $value;
+  -o-transition: $value;
+  -ms-transition: $value;
+  -webkit-transition: $value;
+  transition: $value;
+  -webkit-transform: translateZ(0);// Prevents Chrome from flickering
+}
+
+// Transform. There's one nasty text antialiasing bug in Webkit https://bugs.webkit.org/show_bug.cgi?id=23364
+@mixin transform ($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -o-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
+@mixin columns ($count, $gap) {
+  -webkit-columns: $count;
+  -webkit-column-gap: $gap;
+  -moz-columns: $count;
+  -moz-column-gap: $gap;
+  columns: $count;
+  column-gap: $gap;
+}

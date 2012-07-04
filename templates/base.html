@@ -1,0 +1,50 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ page.lang }}"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="{{ page.lang }}"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ page.lang }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ page.lang }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>{{ page.title }} &mdash; {{ page.website }}</title>
+  <meta name="description" content="{{ page.description }}">
+
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" media="only all" href="/css/style.css">
+  <!--[if (lt IE 9) & (!IEMobile)]><link rel="stylesheet" href="/css/ie.css"><![endif]-->
+  <!--[if IEMobile]><link rel="stylesheet" href="/css/ie-mobile.css"><![endif]-->
+
+  <script src="/js/vendor/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]><div class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+
+  <header>
+  {% block header %}
+    <h1>{{ page.title }}</h1>
+  {% endblock %}
+  </header>
+
+  <div role="main">
+  {% block main %}{% endblock %}
+  </div>
+
+  <footer>
+  {% block footer %}{% endblock %}
+  </footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+  <script src="/js/plugins.js"></script>
+  <script src="/js/main.js"></script>
+
+  <script>
+    var _gaq=[['_setAccount','{{ page.ga }}'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
