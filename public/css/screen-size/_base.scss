@@ -6,11 +6,15 @@ html{
 }
 body{
   height: 100%;
-  background:#efefef;
+  background:#e5e5e5;
+  font-family: "Gill Sans", "Gill Sans MT",Puritan,sans-serif;
+  font-weight: 100;
 }
 
 .main{
   height:100%;
+  width: 960px;
+  overflow: auto;
 }
 
 aside{
@@ -18,8 +22,20 @@ aside{
   width: 13em;
   height: 100%;
   overflow:auto;
+  float: left;
+ 
+  @include box-shadow(-5px, 0px, 3px, rgba(0,0,0,0.1));
+
 }
 
 .main{
-  float:left;
+  float:none;
+  margin: 0 auto;
+}
+
+section.content{
+  height: 100%;
+  background: #efefef;
+  overflow:auto;
+  padding-left: 1em;
 }
