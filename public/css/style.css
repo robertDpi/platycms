@@ -420,14 +420,42 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+body {
+  height: 100%;
+  background: #efefef; }
+
+.main {
+  height: 100%; }
+
+aside {
+  background: #191919;
+  width: 13em;
+  height: 100%;
+  overflow: auto; }
+
+.main {
+  float: left; }
+
+@media screen and (min-width: 320px) {
+  .poba {
+    background: red; } }
+@media screen and (min-width: 480px) {
+  .poba {
+    background: blue; } }
+@media screen and (min-width: 780px) {
+  .poba {
+    background: aqua; } }
 @media print {
   * {
     background: transparent !important;
     color: black !important;
     box-shadow: none !important;
-    text-shadow: none !important;
-    filter: none !important;
-    -ms-filter: none !important; }
+    text-shadow: none !important; }
 
   /* Black prints faster: h5bp.com/s */
   a, a:visited {

@@ -1,1 +1,25 @@
 // Put CSS rules that are the same for all screen sizes here. Think Mobile First™.
+html{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+  height: 100%;
+  background:#efefef;
+}
+
+.main{
+  height:100%;
+}
+
+aside{
+  background:#191919;
+  width: 13em;
+  height: 100%;
+  overflow:auto;
+}
+
+.main{
+  float:left;
+}

@@ -1,5 +1,4 @@
 <?php
-
 # let people know if they are running an unsupported version of PHP
 if(phpversion() < 5.2) {
 

@@ -20,26 +20,41 @@
 <body>
   <!--[if lt IE 7]><div class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
 
-  <header>
+  <!-- <header>
   {% block header %}
-    <h1>{{ page.title }}</h1>
+   <h1>{{ page.title }}</h1>
   {% endblock %}
-  </header>
+  </header> -->
+  
 
-  <div role="main">
-  {% block main %}{% endblock %}
+
+
+  <div class="main" role="main">
+    <aside>
+     <dl itemscope itemtype="http://schema.org/Person">
+
+         <dd itemprop="name">Robert Dawin Pinna</dd>
+
+
+         <dd itemprop="jobTitle">UX / UI Specialist<br/>
+         and Senior Web Designer</dd>
+     </dl>   
+    </aside>
+ 
+    {% block main %}{% endblock %}
+
   </div>
 
   <footer>
   {% block footer %}{% endblock %}
   </footer>
-
+   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/noisy/1.1/jquery.noisy.min.js"></script>
 
   <script src="/js/plugins.js"></script>
   <script src="/js/main.js"></script>
-
   <script>
     var _gaq=[['_setAccount','{{ page.ga }}'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
